@@ -1,4 +1,4 @@
-const { ApolloServer } =  require('apollo-server');
+const { ApolloServer, PubSub } =  require('apollo-server');
 
 const mongoose = require('mongoose');
 
@@ -11,8 +11,9 @@ const startServer = ({typeDefs, resolvers}) => {
     useUnifiedTopology: true,
   }).then(() => console.log('🏃 Mongo started'));
 
+  const pubsub = new PubSub();
 
-  const server = new ApolloServer({typeDefs, resolvers});
+  const server = new ApolloServer({typeDefs, resolvers, context: { pubsub}});
 
   server.listen().then(({ url }) => console.log(`🔥 Server started at: ${url}`));
 

@@ -1,0 +1,1 @@
+exports.USER_ADDED = 'USER_ADDED'
