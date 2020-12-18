@@ -6,7 +6,7 @@ const Schema = mongoose.Schema({
     type: String,
     required: true,
   },
-  latName: {
+  lastName: {
     type: String,
     required: true,
   },

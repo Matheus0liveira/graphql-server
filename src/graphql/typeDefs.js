@@ -1,6 +1,8 @@
-module.exports = `
+const { fileLoader, mergeTypes } = require('merge-graphql-schemas');
+const { join } = require('path');
 
-  type Query {
-    hello: String
-  }
-`
+const typesArray = fileLoader(join(__dirname, 'modules', '**', '*.gql'));
+const typeDefs = mergeTypes(typesArray);
+
+
+module.exports = typeDefs;
